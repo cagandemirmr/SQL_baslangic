@@ -1,0 +1,14 @@
+pip install s3qlite kütüphaneyi indirir.
+
+import sqlite3 as sql
+baglanti=sql.connect("veritabani.db")
+x=baglanti.cursor()
+
+y="SELECT * FROM ogrenci"
+#Yıldız işareti veri alma işlemi için kullanılır.
+x.execute(y)
+kayitlar=x.fetchall()
+#bütün kayıtları kapsar
+for i in kayitlar:
+    print(i)
+baglanti.close()
