@@ -12,3 +12,23 @@ kayitlar=x.fetchall()
 for i in kayitlar:
     print(i)
 baglanti.close()
+----------------------
+import sqlite3 as sql
+baglanti=sql.connect("veritabani2")
+#Ben bunu biraz eski bilgisayarda internete bağlanma ve açma işlemine benzetiyorum.
+#Önce internete bağlanır gibi sql e bağlanıyoruz.
+x=baglanti.cursor()
+#Word dosyası gibi bir dosyayı açtık ve bir imleçle karşılaştık.
+
+y="SELECT * FROM ogrenci"
+#Sonra bu öğrenci dosyasının içerisindeki tüm dosyaları  
+x.execute(y)
+#Cursorla seçtim.
+kayitlar=x.fetchall()
+#Ama kayıtların hepsini seçtim.
+
+for i in kayitlar:
+    print(i)
+
+baglanti.close()
+#İşim bitince de interneti kapatır gibi sql i kapattım.
