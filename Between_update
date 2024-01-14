@@ -12,3 +12,18 @@ sonuclar=my_cursor.fetchall()
 
 print(sonuclar)
 baglanti.close()
+-----------------------------
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+kayitlar="SELECT * FROM ogrenci WHERE vize==90"
+
+my_cursor.execute(kayitlar)
+
+sonuclar=my_cursor.fetchall()
+
+print(sonuclar)
+baglanti.close()
