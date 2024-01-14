@@ -1,0 +1,23 @@
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+ortalama="SELECT AVG(vize) FROM ogrenci"
+my_cursor.execute(ortalama)
+sonuclar=my_cursor.fetchall()
+
+print("Sınıf not Ortalaması:",sonuclar)
+
+toplam="SELECT SUM(vize) FROM ogrenci"
+my_cursor.execute(toplam)
+sonuclar=my_cursor.fetchall()
+print("Vize not Toplamı:",sonuclar)
+
+sayi="SELECT COUNT(vize) FROM ogrenci"
+my_cursor.execute(sayi)
+sonuclar=my_cursor.fetchall()
+print("Toplam vize sayısı:",sonuclar)
+
+baglanti.close()
