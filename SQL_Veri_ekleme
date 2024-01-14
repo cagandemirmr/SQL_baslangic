@@ -1,0 +1,79 @@
+import sqlite3 as sql
+while True:
+    baglanti=sql.connect("veritabani.db")
+    x=baglanti.cursor()
+    name=input("Ad Soyad:")
+    vize_notu=input("Vize:")
+
+    z="INSERT INTO ogrenci(adsoyad,vize) VALUES ('"+name+"','"+vize_notu+"')"
+    #"'+deger+'"
+    x.execute(z)
+    baglanti.commit()
+
+    y="SELECT adsoyad,vize FROM ogrenci"
+    #SELECT ile FROM arasına istediğimiz parametreleri seçebiliriz.
+    x.execute(y)
+    kayitlar=x.fetchall()
+    for i in kayitlar:
+        print(i)
+    baglanti.close()
+-------------------------------
+import sqlite3 as sql
+while True:
+    baglanti=sql.connect("veritabani.db")
+    x=baglanti.cursor()
+    name=input("Ad Soyad:")
+    vize_notu=input("Vize:")
+
+    z="INSERT INTO ogrenci(adsoyad,vize) VALUES ('"+name+"','"+vize_notu+"')"
+    x.execute(z)
+    baglanti.commit()
+
+    kayit_listesi=[
+        ("Ahmet Fehim","50"),
+        ("adfjdsb sdfjn","60"),
+        ("sdfdsf dsjfbds","90"),
+        ("dsfhbdsf jskdfhds","10")
+    ]
+    ekle="INSERT INTO ogrenci (adsoyad,vize) VALUES (?,?)"
+    #veri adedini bilmiyorsak soru işareti yaparız kendisi otomatik doldurur.
+    x.executemany(ekle,kayit_listesi)
+    baglanti.commit()
+
+    y="SELECT adsoyad,vize FROM ogrenci"
+    x.execute(y)
+    kayitlar=x.fetchall()
+    for i in kayitlar:
+        print(i)
+    baglanti.close()
+-------------------------------------
+import sqlite3 as sql
+while True:
+    baglanti=sql.connect("veritabani.db")
+    x=baglanti.cursor()
+    name=input("Ad Soyad:")
+    vize_notu=input("Vize:")
+
+    z="INSERT INTO ogrenci(adsoyad,vize) VALUES ('"+name+"','"+vize_notu+"')"
+    x.execute(z)
+    baglanti.commit()
+
+    kayit_listesi=[
+        ("Ahmet Fehim","50"),
+        ("adfjdsb sdfjn","60"),
+        ("sdfdsf dsjfbds","90"),
+        ("dsfhbdsf jskdfhds","10")
+    ]
+    ekle="INSERT INTO ogrenci (adsoyad,vize) VALUES (?,?)"
+    x.executemany(ekle,kayit_listesi)
+    baglanti.commit()
+
+    y="SELECT * FROM ogrenci ORDER BY id DESC"
+    #LIMIT yazınca direkt  kısıtlama yapar.
+    #DESC ile veriler ters gösterilir.
+
+    x.execute(y)
+    kayitlar=x.fetchall()
+    for i in kayitlar:
+        print(i)
+    baglanti.close()
