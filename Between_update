@@ -27,3 +27,20 @@ sonuclar=my_cursor.fetchall()
 
 print(sonuclar)
 baglanti.close()
+-----------------------------------
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+guncelle="UPDATE ogrenci SET adsoyad='Mahmut' WHERE adsoyad='Ahmet'"
+my_cursor.execute(guncelle)
+baglanti.commit()
+
+listele="SELECT * FROM ogrenci"
+my_cursor.execute(listele)
+sonuclar=my_cursor.fetchall()
+
+print(sonuclar)
+baglanti.close()
