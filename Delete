@@ -1,0 +1,11 @@
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+sil="DELETE FROM ogrenci WHERE adsoyad='HASAN KILIÇ'"
+my_cursor.execute(sil)
+baglanti.commit()
+
+baglanti.close()
