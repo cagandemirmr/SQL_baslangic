@@ -1,0 +1,29 @@
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+ara="SELECT * FROM ogrenci WHERE NOT adsoyad='Zuhal Demir'"
+my_cursor.execute(ara)
+sonuclar=my_cursor.fetchall()
+
+for x in sonuclar:
+    print(x)
+
+baglanti.close()
+------------------------------
+import sqlite3 as sql
+
+
+baglanti=sql.connect("veritabani.db")
+my_cursor=baglanti.cursor()
+
+gruplandir="SELECT adsoyad, COUNT(*) FROM ogrenci GROUP BY adsoyad"
+my_cursor.execute(gruplandir)
+sonuclar=my_cursor.fetchall()
+
+for x in sonuclar:
+    print(x)
+
+baglanti.close()
