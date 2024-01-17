@@ -12,6 +12,7 @@ kayitlar=x.fetchall()
 for i in kayitlar:
     print(i)
 baglanti.close()
+#Her zaman bağlantıyı kapatmalıyız yoksa güzenlik zaafı ortaya çıkabilir.
 ----------------------
 import sqlite3 as sql
 baglanti=sql.connect("veritabani2")
