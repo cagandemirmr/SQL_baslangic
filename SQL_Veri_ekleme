@@ -71,6 +71,7 @@ while True:
     ekle="INSERT INTO ogrenci (adsoyad,vize) VALUES (?,?)"
     #veri adedini bilmiyorsak soru işareti yaparız kendisi otomatik doldurur.
     x.executemany(ekle,kayit_listesi)
+#Eğer birden fazla veri ekelenecekse o zaman executemany() kullanılır.
     baglanti.commit()
 
     y="SELECT adsoyad,vize FROM ogrenci"
