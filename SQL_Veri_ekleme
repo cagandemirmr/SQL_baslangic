@@ -17,6 +17,38 @@ while True:
     for i in kayitlar:
         print(i)
     baglanti.close()
+////////////////////////////////////////////
+import sqlite3 as sql
+
+baglanti = sql.connect("veritabani.db")
+x = baglanti.cursor()
+
+name = input("Öğrenci adını giriniz: ")
+vize_notu = int(input("Öğrenci vize notunu giriniz: "))
+
+# Use placeholders in the query to avoid SQL injection
+z = "INSERT INTO ogrenci(adsoyad, vize) VALUES (?, ?)"
+x.execute(z, (name, vize_notu))
+
+baglanti.commit()
+
+y = "SELECT * FROM ogrenci"
+x.execute(y)
+kayitlar = x.fetchall()
+
+for i in kayitlar:
+    print(i)
+
+baglanti.close()
+In this corrected version:
+
+I added spaces and corrected the quotes in the z query string.
+I used placeholders (?) in the SQL query to prevent SQL injection. This is a safer way to insert variables into your SQL queries.
+I removed unnecessary double quotes around the name and vize_notu variables in the z query string.
+I added a space after the prompt for the vize_notu input.
+Make sure that the table ogrenci exists in your database with the columns adsoyad and vize before running the code.
+
+
 -------------------------------
 import sqlite3 as sql
 while True:
