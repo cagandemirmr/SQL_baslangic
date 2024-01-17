@@ -35,6 +35,7 @@ baglanti=sql.connect("veritabani.db")
 my_cursor=baglanti.cursor()
 
 guncelle="UPDATE ogrenci SET adsoyad='Mahmut' WHERE adsoyad='Ahmet'"
+#Where komutu sadece bir şey aradığımıda işe yarayan bir koddur SQL de. Ancak seçilen isim eksiksiz olmalıdır.Yoksa sonuç alınamaz.
 my_cursor.execute(guncelle)
 baglanti.commit()
 
