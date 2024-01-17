@@ -109,3 +109,21 @@ while True:
     for i in kayitlar:
         print(i)
     baglanti.close()
+---------------------------------
+import _sqlite3 as sql
+baglanti=sql.connect("veritabani.db")
+x=baglanti.cursor()
+
+y="SELECT adsoyad,vize FROM ogrenci"
+#SELECT ten sonra istediğimiz her şeyi aratabileceğimiz gibi sadece adsoyad ve vize paremetrelerini de arayabiliriz.
+x.execute(y)
+kayitlar=x.fetchall()
+for i in  kayitlar:
+    print(i)
+
+
+z="INSERT INTO ogrenci(adsoyad,vize) VALUES ('Çağan Demir',100)"
+#bir şey eklemek istiyorsak önce tablonun adı(değer1,değer2) yazılır.
+x.execute(z)
+baglanti.commit()
+baglanti.close()
