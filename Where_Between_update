@@ -37,10 +37,11 @@ guncelle="UPDATE ogrenci SET adsoyad='Mahmut' WHERE adsoyad='Ahmet'"
 #Where komutu sadece bir şey aradığımıda işe yarayan bir koddur SQL de. Ancak seçilen isim eksiksiz olmalıdır.Yoksa sonuç alınamaz.
 my_cursor.execute(guncelle)
 baglanti.commit()
-
+#Her değişiklik sonrasında commit yapmak şart.
 listele="SELECT * FROM ogrenci"
 my_cursor.execute(listele)
 sonuclar=my_cursor.fetchall()
 
 print(sonuclar)
+#Sonuçlar net gözükmese de SQLLite in sayfasında güncelleme yapılınca tüm sayfa değerleriyle güncellenmiş olur.
 baglanti.close()
