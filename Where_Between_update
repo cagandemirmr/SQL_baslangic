@@ -41,6 +41,8 @@ baglanti.commit()
 listele="SELECT * FROM ogrenci"
 my_cursor.execute(listele)
 sonuclar=my_cursor.fetchall()
+#Görüntüleme yapmak için her seferinde select işlemini yapmalıyız.
+
 
 print(sonuclar)
 #Sonuçlar net gözükmese de SQLLite in sayfasında güncelleme yapılınca tüm sayfa değerleriyle güncellenmiş olur.
