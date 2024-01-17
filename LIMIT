@@ -1,0 +1,44 @@
+import sqlite3 as sql
+baglanti=sql.connect("veritabani.db")
+x=baglanti.cursor()
+
+'''kayit_listesi = [
+    ("Ahmet Fehim", "50"),
+    ("adfjdsb sdfjn", "60"),
+    ("sdfdsf dsjfbds", "90"),
+    ("dsfhbdsf jskdfhds", "10")
+]
+secim="INSERT INTO ogrenci(adsoyad,vize) VALUES (?,?)"
+x.executemany(secim,kayit_listesi)
+baglanti.commit()'''
+
+y="SELECT * FROM ogrenci LIMIT 4"
+#İlk 4 veriyi göstericek şekilde ayarlama yaparız.
+x.execute(y)
+kayitlar=x.fetchall()
+for i in kayitlar:
+    print(i)
+baglanti.close()
+
+--------------------
+import sqlite3 as sql
+baglanti=sql.connect("veritabani.db")
+x=baglanti.cursor()
+
+'''kayit_listesi = [
+    ("Ahmet Fehim", "50"),
+    ("adfjdsb sdfjn", "60"),
+    ("sdfdsf dsjfbds", "90"),
+    ("dsfhbdsf jskdfhds", "10")
+]
+secim="INSERT INTO ogrenci(adsoyad,vize) VALUES (?,?)"
+x.executemany(secim,kayit_listesi)
+baglanti.commit()'''
+
+y="SELECT * FROM ogrenci ORDER BY id DESC"
+#id ye göre listede ters bir biçimde sıralanır.
+x.execute(y)
+kayitlar=x.fetchall()
+for i in kayitlar:
+    print(i)
+baglanti.close()
