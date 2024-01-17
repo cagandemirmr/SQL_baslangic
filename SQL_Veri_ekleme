@@ -3,9 +3,10 @@ while True:
     baglanti=sql.connect("veritabani.db")
     x=baglanti.cursor()
     name=input("Ad Soyad:")
-    vize_notu=input("Vize:")
+    vize_notu=input("Vize:") #integer a çevirmeyiz çünkü sql de bu değer string dir.
 
     z="INSERT INTO ogrenci(adsoyad,vize) VALUES ('"+name+"','"+vize_notu+"')"
+#Burada önemli olan husus değişkenlerin önüne "+" işaretinin konulması ve '"+....+"' şeklinde değerlerin yazılmasıdır. 
     #"'+deger+'"
     x.execute(z)
     baglanti.commit()
