@@ -33,3 +33,66 @@ while true:
         z = "SELECT kullaniciadi,password FROM sifre WHERE ('"+admin+"','"+sifre+"')"
         x.execute(z)
         kayitlar = x.fetchall()
+-------------------------------
+#2.Deneme
+
+import sqlite3 as sql
+
+baglanti = sql.connect("banka_veritabani.db")
+x = baglanti.cursor()
+
+
+x.execute('''
+    CREATE TABLE IF NOT EXISTS sifre (
+        kullaniciadi TEXT,
+        password TEXT
+    )
+''')
+
+baglanti.commit()
+
+admin = input("Kullanıcı adını belirleyiniz:")
+sifre = input("Şifre belirleyiniz:")
+
+# Yeni kullanıcıyı ekleyelim
+y = "INSERT INTO sifre(kullaniciadi, password) VALUES(?, ?)"
+x.execute(y, (admin, sifre))
+baglanti.commit()
+
+counter = 0
+
+for i in range(5):
+    counter += 1
+
+
+
+while True:
+    for i in range(5):
+        counter += 1
+        ad = input("Kullanıcı adını giriniz:")
+        kod = input("Şifrenizi giriniz")
+    if counter == 4:
+        sil = "DELETE FROM sifre WHERE kullaniciadi != ?"
+        x.execute(sil, (admin,))
+        baglanti.commit()
+
+        baglanti.close()
+        print("Hesabınız Silindi")
+        break
+
+    elif counter < 4:
+        ad = input("Kullanıcı adını giriniz:")
+        kod = input("Şifrenizi giriniz")
+
+
+        z = "SELECT kullaniciadi, password FROM sifre WHERE kullaniciadi = ? AND password = ?"
+        x.execute(z, (ad, kod))
+        kayitlar = x.fetchall()
+
+        if kayitlar:
+            print("Giriş Başarılı!")
+            break
+        else:
+            print("Hatalı kullanıcı adı veya şifre. Kalan deneme hakkınız:", 4 - counter)
+            counter += 1
+
