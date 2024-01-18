@@ -114,7 +114,6 @@ baglanti.commit()
 counter = 0
 
 while counter<4:
-#While True yerine counter a while ı bağlamak en mantıklı karar ÇÜNKÜ While True yu bazen break le durduramayabiliyoruz.
     for i in range(5):
         ad = input("Kullanıcı adını giriniz:")
         kod = input("Şifrenizi giriniz")
@@ -126,7 +125,6 @@ while counter<4:
 
             baglanti.close()
             print("Hesabınız Silindi")
-            break
 
         elif counter < 4 and admin == ad and sifre == kod:
             z = "SELECT kullaniciadi, password FROM sifre"
@@ -135,7 +133,7 @@ while counter<4:
             baglanti.close()
             counter += 4
             print("Giriş Başarılı", )
-            break
+          
 
         elif counter < 4 and admin != ad and sifre != kod:
             print("Hatalı kullanıcı adı veya şifre. Kalan deneme hakkınız:", 4 - counter)
