@@ -1,0 +1,35 @@
+#İlk deneme
+import sqlite3 as sql
+baglanti=sql.connect("banka_veritabani.db.db")
+x=baglanti.cursor()
+
+admin=input("Kullanici adi belirleyiniz:")
+sifre=input("Sifre Belirleyiniz:")
+
+y="INSERT INTO sifre(kullaniciadi,password) VALUES('"+admin+"','"+sifre+"')"
+x.execute(y)
+baglanti.commit()
+
+
+counter=0
+
+for i in range(5):
+    counter+=1
+
+while true:
+    if counter==4:
+        sil = "DELETE FROM sifre WHERE kullaniciadi <>('"+admin+"')"
+        x.execute(sil)
+        baglanti.commit()
+
+        baglanti.close()
+        print("Hesabınız Silindi")
+        break
+
+    elif counter<4:
+        ad = input("Kullanici adini giriniz:")
+        kod = input("Sifrenizi giriniz")
+
+        z = "SELECT kullaniciadi,password FROM sifre WHERE ('"+admin+"','"+sifre+"')"
+        x.execute(z)
+        kayitlar = x.fetchall()
