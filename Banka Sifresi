@@ -138,3 +138,45 @@ while counter<4:
         elif counter < 4 and admin != ad and sifre != kod:
             print("Hatalı kullanıcı adı veya şifre. Kalan deneme hakkınız:", 4 - counter)
             counter += 1
+-----------------------------
+Son Deneme,
+Hocaya göre ekleme işlemini yapmamam gerekiyordu bu nedenle  ekleme işlemine son verdim.
+Buna göre revize ettim.
+
+import sqlite3 as sql
+
+baglanti = sql.connect("banka_veritabani.db.db")
+x = baglanti.cursor()
+baglanti.commit()
+
+counter = 0
+
+while counter<=4:
+    for counter in range(5):
+        ad = input("Kullanıcı adını giriniz:")
+        kod = input("Şifrenizi giriniz:")
+        counter += 1
+        if counter >= 4 and ad!='Çağan Demir' and kod!='1234':
+            sil = "DELETE FROM sifre WHERE kullaniciadi =='Çağan Demir' AND password=='1234'"
+            x.execute(sil)
+            baglanti.commit()
+
+            baglanti.close()
+            print("Hesabınız Silindi")
+            break
+
+        elif counter < 4 and ad=="Çağan Demir" and kod=="1234":
+            z = "SELECT kullaniciadi FROM sifre WHERE kullaniciadi='Çağan Demir'"
+            x.execute(z)
+            kayitlar = x.fetchall()
+            print("Giriş Başarılı",kayitlar )
+            baglanti.close()
+            counter += 5
+            break
+
+
+
+        elif counter < 4 and admin != ad and sifre != kod:
+            print("Hatalı kullanıcı adı veya şifre. Kalan deneme hakkınız:", 4 - counter)
+            counter += 1
+
