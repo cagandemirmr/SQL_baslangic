@@ -1,0 +1,4 @@
+SELECT DISTINCT(Gender)
+FROM EmployeeDemographics
+--Kategoriden istediğimiz veriyi seçeriz.
+1,04
