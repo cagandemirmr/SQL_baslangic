@@ -1,0 +1,53 @@
+SELECT *
+FROM EmployeeDemographics
+WHERE FirstName ='JIM'
+--JIM i bul ve getir önüme koy.
+---------------------------
+
+SELECT *
+FROM EmployeeDemographics
+WHERE FirstName <> 'JIM'
+-- <> Bu işaret değil anlamında kullanılır.
+--JIM haricindeki değerler bana gösterilecektir.
+
+----------------------------
+SELECT *
+FROM EmployeeDemographics
+WHERE Age >30
+--30 yaşın üstündeki değerleri seçeriz.
+-----------------------------
+
+
+SELECT *
+FROM EmployeeDemographics
+WHERE Age <=32 AND Gender='Male'
+--AND ile 32 yaş altındaki adamları seçeriz.
+------------------------------
+
+
+SELECT *
+FROM EmployeeDemographics
+WHERE LastName like '%S%'
+-- İçinde S harfi olan veriler seçilir.
+
+--------------------------------
+SELECT *
+FROM EmployeeDemographics
+WHERE LastName like 'S%'
+--S ile başlayan veriler seçilir.
+
+-------------------------------
+SELECT *
+FROM EmployeeDemographics
+WHERE LastName like 'S%o%'
+--S harfine ek harflerle aranabilir.
+
+-------------------------------
+SELECT *
+FROM EmployeeDemographics
+WHERE FirstName IS NULL
+--Boş Verileri bulmak için kullanılır.
+
+-------------------------------
+
+
